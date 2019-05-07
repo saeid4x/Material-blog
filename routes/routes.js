@@ -7,8 +7,9 @@ var path=require('path');
  var mongodb=require('mongodb');
  var mongoose=require('mongoose');
  var CommentModel=require('../Models/Comments');
+ import Keys from './secret/keys';
 
- let connectionString='mongodb://127.0.0.1:27017/myBlog';
+ let connectionString=Keys.ConnectionString;
  mongoose.connect(connectionString,{useNewUrlParser:true});
 
 // <Date>
