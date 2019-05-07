@@ -7,10 +7,17 @@ var path=require('path');
  var mongodb=require('mongodb');
  var mongoose=require('mongoose');
  var CommentModel=require('../Models/Comments');
- import Keys from './secret/keys';
+  
 
- let connectionString=Keys.ConnectionString;
- mongoose.connect(connectionString,{useNewUrlParser:true});
+ let connectionString= 'mongodb://127.0.0.1:27017/myBlog';
+ mongoose.connect(connectionString,{useNewUrlParser:true},(err,success)=>{
+     if(err){
+         console.log('connect database error=',err);
+     }
+     else{
+         console.log('connect database sucess=',success);
+     }
+ });
 
 // <Date>
 var date=new Date();
