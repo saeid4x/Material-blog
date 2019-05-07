@@ -1,0 +1,16 @@
+.homepage-category-title{
+    margin-top:20px;
+}
+.homepage-wrapper{
+    width: 98%;
+    margin-left:15px;
+}
+.homepage-category-title{
+    text-align: center;
+    font-size:23px;
+    color:white
+}
+.homepage-category-card{
+    background-color: #880e4f;
+    
+}

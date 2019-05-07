@@ -1,0 +1,25 @@
+<h3 style="color:green">update</h3>
+
+ 
+<form action="/admin/update" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="id" value="{{data._id}}">
+title:<input type="title" placeholder="enter title..." name="title"  value="{{data.title}}"> <br>
+body: <textarea name="body" id="" cols="30" rows="10"> {{data.body}}</textarea><br><br> <br>
+<select name="category">
+    <option value="programming ">    برنامه نویسی </option>
+    <option value="web-developer">   طراحی وب سایت  </option>
+    <option value="mobile-developer">   برنامه نویسی موبایل  </option>
+    <option value="database ">  پایگاه داده    </option>
+    <option value="network">    شبکه </option>
+     
+</select>
+<span>currnet category={{data.category}}</span>
+<br><br>  
+current-image= <br>
+<img src='/uploads/images/{{data.postImage}}' alt="" width="150" height="150"><br><br>
+upload img-post: <input type="file" name="img_post">
+<br><br> <br>
+<input type="submit" value="send post">
+</form>
+
+ 

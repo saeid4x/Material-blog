@@ -1,0 +1,14 @@
+.insertComment  input{
+    direction: rtl;
+    
+     
+}
+.insertComment-inputs{
+    padding-right:20px !important;
+    /* color:red !important; */
+    width: 200px !important;
+}
+ .insertcommnet-btnSubmit{
+     width: 250px;
+     margin-right:300px !important;
+ }

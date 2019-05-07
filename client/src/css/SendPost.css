@@ -1,0 +1,20 @@
+.sendPost{
+    /* margin-top: 10px; */
+    padding-right: 20;
+  
+    
+    /* border:1px solid red; */
+}
+.sendpost-title{
+    text-align:center;
+    margin-top:10px;
+    font-size:25px;
+    /* color:red */
+}
+ .custom-select{
+     direction: rtl
+ }
+ input[name='title']{
+     direction: rtl;
+ }
+   

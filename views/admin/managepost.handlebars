@@ -1,0 +1,21 @@
+
+<h1 style="color:purple">manage post</h1>
+
+<section>
+    {{#each data as |value key|}}
+    <img src="/uploads/images/{{postImage}}" alt="" width="400" height="400">
+    <span>{{key}}</span>
+    <h4>{{title}}</h4><br> 
+    <p>{{category}}</p>
+    <div name="actions">
+        <a href="/admin/update/{{_id}}">update</a>
+        <br>
+        <a href="/admin/delete/{{_id}}">Delete</a>
+    </div><br> 
+    <hr>
+
+
+
+
+    {{/each}}
+</section>

@@ -1,0 +1,18 @@
+.postpercat{
+    margin-top:0px;
+    padding:10px;
+}
+ .postpercat-body{
+     direction: rtl;
+     text-align: justify;
+     
+ }
+ .postpercat-card{
+     margin-top:10px;
+ }
+ .postpercat-title{
+     font-size: 20px;
+    direction:rtl;
+    float: right;
+
+ }

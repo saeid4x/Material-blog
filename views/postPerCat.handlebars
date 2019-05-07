@@ -1,0 +1,19 @@
+
+<h1>post per cat</h1>
+
+{{#each data}}
+<div>
+    <a href="/post/{{_id}}">
+    <img src="/uploads/images/{{postImage}}" alt="" width="200" height="200">
+    </a>
+    <br>
+    <a href="/post/{{_id}}">
+    <h4>title: {{title}}</h4>
+    </a>
+    <br>
+    <span>author={{author}}</span>
+    <br>
+    <span>date={{datePosted}}</span>
+</div>
+<hr>
+{{/each}}

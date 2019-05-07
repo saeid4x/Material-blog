@@ -1,0 +1,21 @@
+
+<h1 style="color:purple">send post </h1>
+
+<form action="/admin/sendpost" method="POST" enctype="multipart/form-data">
+title:<input type="title" placeholder="enter title..." name="title"><br> <br>
+body: <textarea name="body" id="" cols="30" rows="10"></textarea><br><br> <br>
+<select name="category" id="">
+    <option value="programming">    برنامه نویسی </option>
+    <option value="web-developer">   طراحی وب سایت  </option>
+    <option value="mobile-developer">   برنامه نویسی موبایل  </option>
+    <option value="database ">  پایگاه داده    </option>
+    <option value="network">    شبکه </option>
+     
+</select>
+<br><br> <br>
+upload img-post: <input type="file" name="img_post">
+<br><br> <br>
+<input type="submit" value="send post">
+</form>
+
+<div>{{#if msg}}<span style="color:green">{{msg}}</span>{{else}}</div>{{/if}}
