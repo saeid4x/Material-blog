@@ -1,0 +1,35 @@
+.admin-input {
+  background-color: purple !important;
+  opacity: 0.3 !important;
+  /* color:red; */
+  border-radius:10px !important;
+ 
+   
+}
+.admin-input:focus {
+  background-color: white !important;
+  opacity: 1 !important;
+  color:black;
+ 
+}
+textarea[class='admin-input']{
+  width:60%;
+  float: right;
+  margin-right:100px;
+  height: 300px;
+  direction: rtl;
+  padding: 10px 10px 0  0 !important;
+}
+ .admin-component-select{
+    
+   /* background-color: purple !important; */
+   color:black;
+
+   opacity:0.9;
+   
+ }
+
+.admin-component-select option{
+  color:black;
+  
+}

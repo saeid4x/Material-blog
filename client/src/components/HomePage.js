@@ -54,7 +54,7 @@ class HomePage extends Component {
      return this.state.postsProgramming.map(item=>(
          
         <MDBCol md="3">
-          <Card className="postpercat-card">
+          <Card className="postpercat-card purple">
           <CardActionArea>
             <CardMedia
               component="img"
@@ -64,7 +64,7 @@ class HomePage extends Component {
                image={`${this.state.url3}/uploads/images/${item.postImage}`}
               title="post title"
             />
-            <CardContent>
+            <CardContent >
                <p className="postpercat-title">{item.title}</p>
                
               
@@ -75,12 +75,14 @@ class HomePage extends Component {
          <CardContent>
         <p className="postpercat-body">{(item.body).slice(0,150)}.....</p>
          </CardContent>
-          <BottomNavigation value="my value" showLabels>
+         <div className="homepage-card-buttom">
+          <BottomNavigation value="my value" className="purple" showLabels>
             <BottomNavigationAction label={item.author} icon={<AuthorIcon />} />
             <BottomNavigationAction className="tt" label={ ` ${item.numBazdid}`}  icon={<ViewPostIcon />} />
             <BottomNavigationAction  label={item.datePosted} icon={<DateIcon />} />
             <BottomNavigationAction label={item.category} icon={<CategoryIcon />} />
           </BottomNavigation>
+          </div>
           <CardActions>
             <Button size="small" color="primary">
               <Link to={`/post/${item._id}`}>جزئیات</Link>
@@ -101,7 +103,7 @@ class HomePage extends Component {
     return this.state.postsMobProgramming.map(item=>(
         
        <MDBCol md="3">
-         <Card className="postpercat-card">
+         <Card className="postpercat-card purple">
          <CardActionArea>
            <CardMedia
              component="img"
@@ -122,7 +124,7 @@ class HomePage extends Component {
         <CardContent>
        <p className="postpercat-body">{(item.body).slice(0,150)}.....</p>
         </CardContent>
-         <BottomNavigation value="my value" showLabels>
+         <BottomNavigation value="my value" className="purple" showLabels>
            <BottomNavigationAction label={item.author} icon={<AuthorIcon />} />
            <BottomNavigationAction className="tt" label={ ` ${item.numBazdid}`}  icon={<ViewPostIcon />} />
            <BottomNavigationAction  label={item.datePosted} icon={<DateIcon />} />
@@ -149,7 +151,7 @@ loadDatabase(){
     return this.state.postsDatabase.map(item=>(
         
        <MDBCol md="3">
-         <Card className="postpercat-card">
+         <Card className="postpercat-card purple">
          <CardActionArea>
            <CardMedia
              component="img"
@@ -170,7 +172,7 @@ loadDatabase(){
         <CardContent>
        <p className="postpercat-body">{(item.body).slice(0,150)}.....</p>
         </CardContent>
-         <BottomNavigation value="my value" showLabels>
+         <BottomNavigation value="my value" className="purple" showLabels>
            <BottomNavigationAction label={item.author} icon={<AuthorIcon />} />
            <BottomNavigationAction className="tt" label={ ` ${item.numBazdid}`}  icon={<ViewPostIcon />} />
            <BottomNavigationAction  label={item.datePosted} icon={<DateIcon />} />
@@ -197,7 +199,7 @@ loadAnimation(){
     return this.state.postsAnimation.map(item=>(
         
        <MDBCol md="3">
-         <Card className="postpercat-card">
+         <Card className="postpercat-card purple">
          <CardActionArea>
            <CardMedia
              component="img"
@@ -218,7 +220,7 @@ loadAnimation(){
         <CardContent>
        <p className="postpercat-body">{(item.body).slice(0,150)}.....</p>
         </CardContent>
-         <BottomNavigation value="my value" showLabels>
+         <BottomNavigation value="my value" className="purple" showLabels>
            <BottomNavigationAction label={item.author} icon={<AuthorIcon />} />
            <BottomNavigationAction className="tt" label={ ` ${item.numBazdid}`}  icon={<ViewPostIcon />} />
            <BottomNavigationAction  label={item.datePosted} icon={<DateIcon />} />
@@ -245,7 +247,7 @@ loadGraphic(){
     return this.state.postsGfx.map(item=>(
         
        <MDBCol md="3">
-         <Card className="postpercat-card">
+         <Card className="postpercat-card purple">
          <CardActionArea>
            <CardMedia
              component="img"
@@ -266,7 +268,7 @@ loadGraphic(){
         <CardContent>
        <p className="postpercat-body">{(item.body).slice(0,150)}.....</p>
         </CardContent>
-         <BottomNavigation value="my value" showLabels>
+         <BottomNavigation value="my value" className="purple" showLabels>
            <BottomNavigationAction label={item.author} icon={<AuthorIcon />} />
            <BottomNavigationAction className="tt" label={ ` ${item.numBazdid}`}  icon={<ViewPostIcon />} />
            <BottomNavigationAction  label={item.datePosted} icon={<DateIcon />} />
@@ -293,7 +295,7 @@ loadWebDeveloper(){
     return this.state.postsWebDevelop.map(item=>(
         
        <MDBCol md="3">
-         <Card className="postpercat-card">
+         <Card className="postpercat-card purple">
          <CardActionArea>
            <CardMedia
              component="img"
@@ -314,7 +316,7 @@ loadWebDeveloper(){
         <CardContent>
        <p className="postpercat-body">{(item.body).slice(0,150)}.....</p>
         </CardContent>
-         <BottomNavigation value="my value" showLabels>
+         <BottomNavigation className="purple" value="my value" showLabels>
            <BottomNavigationAction label={item.author} icon={<AuthorIcon />} />
            <BottomNavigationAction className="tt" label={ ` ${item.numBazdid}`}  icon={<ViewPostIcon />} />
            <BottomNavigationAction  label={item.datePosted} icon={<DateIcon />} />
@@ -425,7 +427,7 @@ loadWebDeveloper(){
         {/* ******programming *********/}
         <MDBRow>
             <MDBCol>
-                <Card className="homepage-category-card blue">
+                <Card className="homepage-category-card purple container">
                     <div className="homepage-category-title">تازه ترین مطالب برنامه نویسی <Done/></div>
                 </Card>
 
@@ -441,7 +443,7 @@ loadWebDeveloper(){
          
          <MDBRow>
             <MDBCol>
-                <Card className="blue">
+                <Card className="purple container">
                     <div className="homepage-category-title">تازه ترین مطالب برنامه نویسی موبایل<Done/></div>
                 </Card>
 
@@ -459,7 +461,7 @@ loadWebDeveloper(){
          
    <MDBRow>
             <MDBCol>
-                <Card className="blue">
+                <Card className="purple container">
                     <div className="homepage-category-title"> تازه ترین مطالب پایگاه داده <Done/></div>
                 </Card>
 
@@ -476,7 +478,7 @@ loadWebDeveloper(){
 
         <MDBRow>
             <MDBCol>
-                <Card className="blue">
+                <Card className="purple container">
                     <div className="homepage-category-title"> تازه ترین مطالب گرافیک <Done/></div>
                 </Card>
 
@@ -495,7 +497,7 @@ loadWebDeveloper(){
 
    <MDBRow>
             <MDBCol>
-                <Card className="blue">
+                <Card className="purple container">
                     <div className="homepage-category-title"> تازه ترین مطالب انیمیشن <Done/></div>
                 </Card>
 

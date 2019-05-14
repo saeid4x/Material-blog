@@ -15,11 +15,16 @@ import "../../css/SendPost.css";
 import HambergerMenu from '../HambergerMenu';
 import ButtomNavbar from '../BottomNavbar';
 import Navbar from '../Navbar';
+import { Card } from "@material-ui/core";
+import Create from "@material-ui/icons/Create";
+import SidePanel from './SidePanel';
 
 class UpdatePost extends Component{
     
     state={
-       post:[]
+       post:[],
+       body:'',
+       title:''
          
     }
 
@@ -34,81 +39,72 @@ class UpdatePost extends Component{
             .then((data)=>{
                this.setState({
                    post:data,
-                   body:data.body
+                   body:data.body,
+                   title:data.title
                });
                console.log(data)
             }).catch((err)=>{console.log('error during fetch='+err)});
     };
      
+    render() {
+      var bodyPost=this.state.body;
 
-
-    render(){
-         
-          
-    
-
-    
-
-        return(
-            <div>
-              <Navbar/>
-              <ButtomNavbar/>
-              
-               
-            <div className="sendPost">
-<MDBRow center>
-    <MDBCol md="11">
-    <MDBCard className="sendpost-card">
-            <MDBCardBody>
-              <MDBCardTitle>
-                <div className="row ">
-                  <div className="sendpost-title"> ویرایش پست</div>
-                
-                  <MDBIcon far icon="arrow-alt-circle-up" />
-                </div>
-                <MDBCardText>
-                <hr/>
-                
+      
+      return (
+        <div>
+          <Navbar />
+  
+          <ButtomNavbar />
+          <SidePanel className="sidePanel"/>
+          <div className="sendPost">
+            <MDBRow center>
+              <MDBCol md="11">
+                <Card className="sendpost-card purple">
+                  <div className="sendpost-title">
+                    
+                    ویرایش پست <Create />
+                  </div>
+  
+                  <hr />
                   <form
                     method="POST"
-                    action={`http://127.0.0.1:8082/admin/update/${this.props.match.params.post_id}`}
+                    action="http://127.0.0.1:8082/admin/update"
                     enctype="multipart/form-data"
                   >
                     <MDBRow end>
-                      <MDBCol md="10">
-                        <input
-                          type="text"
-                          name="title"
-                          placeholder="عنوان پست را وارد کنید ..."
-                          defaultValue={this.state.post.title}
-                          />
-                       
+                      <MDBCol md="6">
+                        <input type="text" name="title" className="admin-input" defaultValue={this.state.title}/>
                       </MDBCol>
-                      <MDBCol md="2">
+                      <MDBCol md="1">
                         <span>عنوان </span>
                       </MDBCol>
                     </MDBRow>
-
-                    <MDBRow>
-                      <MDBCol md="7">
-                          <MDBInput
+  
+                    <MDBRow end>
+                      <MDBCol md="1">
+                    <span>متن  </span>
+                      </MDBCol>
+                       
+                      <MDBCol md="12">
+                        {/* <MDBInput
                           type="textarea"
                           label="متن پست"
                           rows="15"
                           icon="pencil-alt"
                           name="body"
-                          defaultValue={this.state.post.title}
-                        />  
+                          className="sendpost-body"
+                        /> */}
                          
+                        <textarea name="body" className="admin-input" id="" cols="30" rows="10" ></textarea>
                       </MDBCol>
                     </MDBRow>
- 
-
+  
                     <MDBRow end>
-                      <MDBCol md="6">
+                    
+                      <MDBCol md="3">
                         <select
                           name="category"
-                          className="browser-default custom-select"
+                          className="browser-default custom-select admin-component-select"
                         >
                           <option value="" disabled selected>
                             انتخاب دسته بندی پست
@@ -124,10 +120,11 @@ class UpdatePost extends Component{
                           <option value="animation">انیمیشن </option>
                         </select>
                       </MDBCol>
+                      <MDBCol md="1"></MDBCol>
                     </MDBRow>
-
+  
                     <MDBRow end>
-                      <MDBCol md="5">
+                      <MDBCol md="3">
                         <div className="custom-file">
                           <input
                             type="file"
@@ -140,33 +137,31 @@ class UpdatePost extends Component{
                             className="custom-file-label"
                             htmlFor="inputGroupFile01"
                           >
-                           انتخاب تصویر پست
+                            انتخاب تصویر پست
                           </label>
                         </div>
                       </MDBCol>
+                      <MDBCol md="1"> </MDBCol>
                     </MDBRow>
                     <MDBRow center>
-                        <MDBCol md="4">
-                         <input type="submit" className="btn purple text-white" value=" ویرایش پست"/>
-                        </MDBCol>
+                      <MDBCol md="4">
+                        <input
+                          type="submit"
+                          className="btn purple text-white"
+                          value="ویرایش پست"
+                        />
+                      </MDBCol>
+                     
                     </MDBRow>
-
-                    
                   </form>
-                
-                </MDBCardText>
-              </MDBCardTitle>
-            </MDBCardBody>
-          </MDBCard>
-    </MDBCol>
-</MDBRow>
-
-    </div>
-               
-                
-               
-            </div>
-        )
+                </Card>
+              </MDBCol>
+            </MDBRow>
+          </div>
+        </div>
+      );
     }
+
+ 
 }
 export default UpdatePost;

@@ -46,7 +46,7 @@ class ShowComments extends Component {
     return this.state.comments.map(item => (
       <div key={item._id}>
         <div className="showcomment-wrapper">
-        <Paper> 
+        <Paper className="purple"> 
           <MDBRow end>
             <MDBCol md="12">
               <div>

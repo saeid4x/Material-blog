@@ -1,0 +1,55 @@
+import React, { Component } from "react";
+import "../../css/SidePanel.css";
+import "../../css/style.css";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/Inbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import {Link} from 'react-router-dom';
+
+import { MDBRow, MDBCol } from "mdbreact";
+ 
+
+class SidePanel extends Component {
+  render() {
+    return (
+      <div className="sidePanel">
+        <section className="sidePanel-avatar row">
+          <img src="../images/static/noimage.jpg" alt="" className="col-md-8 sidePanel-avater-img" />
+
+          <span className="col-md-12">saeid4x</span>
+        </section>
+       
+
+        <hr />
+
+        <section className="sidePanel-category">
+         <ul>
+             <li id="sidePanel-list-addpost">
+                <Link to="/admin/sendpost">  <span> ارسال پست جدید</span></Link>
+               
+                 <img src='/images/static/add-post.png'/>
+             </li>
+       
+         
+             <li id="sidePanel-list-managepost">
+                 <div>
+                     <Link to="/admin/managepost"><span> مدیریت پست</span></Link>
+                 
+                 <img src='/images/static/add-post.png'/>
+                 </div>
+          
+             </li>
+             </ul>
+          
+
+
+
+        </section>
+      </div>
+    );
+  }
+}
+export default SidePanel;

@@ -76,9 +76,9 @@ class DetailsPost extends Component {
         <Navbar />
         <ButtomNavbar/>
 
-        <MDBRow end className="details-post">
+        <MDBRow  end className="details-post">
           <MDBCol md="8">
-            <Card>
+            <Card className="purple">
               <MDBRow end>
                 <Typography
                   gutterBottom
@@ -107,7 +107,7 @@ class DetailsPost extends Component {
 
               <Divider />
               <MDBRow center>
-                <BottomNavigation value="my value" showLabels>
+                <BottomNavigation value="my value" className="purple" showLabels>
                   <BottomNavigationAction
                     label="50 نظر"
                     icon={<CommentIcon />}
@@ -131,7 +131,8 @@ class DetailsPost extends Component {
           </MDBCol>
         </MDBRow>
 
-        <InsertComment postID={this.props.match.params.postID} />
+        <InsertComment postID={this.props.match.params.postID} className="detailsPost-insertPost"/>
+        
         <hr />
 
         <ShowComment postID={this.props.match.params.postID} />

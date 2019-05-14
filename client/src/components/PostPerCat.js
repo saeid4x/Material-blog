@@ -52,7 +52,7 @@ class PostPerCat extends Component {
  
           
           <MDBCol md="3">
-          <Card className="postpercat-card">
+          <Card className="postpercat-card purple">
           <CardActionArea>
             <CardMedia
               component="img"
@@ -73,7 +73,7 @@ class PostPerCat extends Component {
          <CardContent>
         <p className="postpercat-body">{(item.body).slice(0,150)}.....</p>
          </CardContent>
-          <BottomNavigation value="my value" showLabels>
+          <BottomNavigation className="purple" value="my value" showLabels>
             <BottomNavigationAction label={item.author} icon={<AuthorIcon />} />
             <BottomNavigationAction className="tt" label={ ` ${item.numBazdid}`}  icon={<ViewPostIcon />} />
             <BottomNavigationAction  label={item.datePosted} icon={<DateIcon />} />

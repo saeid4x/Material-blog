@@ -1,0 +1,33 @@
+//======= 1==========//
+var action={
+    type:'sasasas',
+    user:{name:'saeid'}
+};
+
+
+//====== 2==========
+store.dispatch(action);
+
+
+//========== 3 ======
+var someReducer=function(state,action){
+      if(state===undefined)
+        {
+            var state=[]
+        }
+        if(action.type==='add_user'){
+            state.push(action.user);
+        }
+
+     return state;
+}
+
+//create store 
+var store=Redux.createStore(userReducer);
+
+store.dispatch({
+    type:'sasas',
+    user:{name:'said'}
+})
+
+

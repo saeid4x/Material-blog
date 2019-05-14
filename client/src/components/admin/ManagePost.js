@@ -15,6 +15,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import SearchIcon from "@material-ui/icons/Search";
 import "../../css/ManagePost.css";
 import ButtomNavbar from '../BottomNavbar';
+import SidePanel from './SidePanel';
 
 
 class ManagePost extends Component {
@@ -45,6 +46,8 @@ class ManagePost extends Component {
     var finalPosts = postsData.length ? (
       postsData.map(item => (
         //******************************************************** */
+ 
+        // ********************************************************* */
 
         <TableRow key={item._id}>
           <TableCell component="th" scope="row">
@@ -70,7 +73,8 @@ class ManagePost extends Component {
               </Button>
             </Link>
           </TableCell>
-          <TableCell align="right"> {item.category}</TableCell>
+         
+          <TableCell align="right" >  { item.category} </TableCell>
           <TableCell align="right">{item.title}</TableCell>
           <TableCell align="right">{this.number++}</TableCell>
         </TableRow>
@@ -96,7 +100,8 @@ class ManagePost extends Component {
       <div>
         <Navbar/>
         <ButtomNavbar/>
-        <div className="container">
+        <SidePanel/>
+        <div className="managepost-wrapper">
           <Table className="managepost">
             <TableHead>
               <TableRow>

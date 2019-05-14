@@ -6,14 +6,14 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import './test.css';
 import ButtomNavigation from '../BottomNavbar';
-import HambergerMenu from '../HambergerMenu';
+// import HambergerMenu from '../HambergerMenu';
+import SidePanel from '../admin/SidePanel'
 
 class Mdb extends Component {
   render() {
     return (
       <div>
- 
-<HambergerMenu/>
+ <SidePanel/>
 
 
 
