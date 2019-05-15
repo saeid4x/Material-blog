@@ -5,7 +5,7 @@ var express=require('express'),
     path=require('path');
     var routes=require('./routes/routes');
     var cors=require('cors');
-
+var passport_conf=require('./config/passport-conf');
 
 var app=express();
 // var router=Router();

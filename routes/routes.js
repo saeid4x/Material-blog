@@ -7,6 +7,7 @@ var path=require('path');
  var mongodb=require('mongodb');
  var mongoose=require('mongoose');
  var CommentModel=require('../Models/Comments');
+ var passport =require('passport');
   
 
  let connectionString= 'mongodb://127.0.0.1:27017/myBlog';
@@ -15,7 +16,7 @@ var path=require('path');
          console.log('connect database error=',err);
      }
      else{
-         console.log('connect database sucess=',success);
+        //  console.log('connect database sucess=',success);
      }
  });
 
@@ -62,7 +63,7 @@ router.post('/admin/sendpost',upload.single('img_post'),(req,res)=>{
    
     // var filename2='post-'+Date.now()+path.extname(req.file.img_post);
     
-    console.log('filename',req.file.filename);
+    // console.log('filename',req.file.filename);
     var data=new postModel();
 
        
@@ -238,7 +239,7 @@ router.post('/post/:postID/insertComment',upload.none(),(req,res)=>{
             res.json(err);
         }
         else{
-            console.log(req.params.postID);
+            // console.log(req.params.postID);
             var redirectUrl=`http://127.0.0.1:3000/post/${postid}`;
             res.redirect(redirectUrl);
         }
@@ -255,7 +256,7 @@ router.get('/post/:id/comments',(req,res)=>{
             res.json(err);
         }
         else{
-            console.log('success');
+            // console.log('success');
             res.json(data);
         }
     }).sort({date:-1});
@@ -277,6 +278,7 @@ router.get('/post/:id/comments/count',(req,res)=>{
 
 // <users-routes />
 
+// router.get('/auth/google',pas)
 
 //<test-route>
 router.get('/test/msg',(req,res)=>{
@@ -292,6 +294,23 @@ router.get('/test/msg',(req,res)=>{
 
 //<test-route />
 
+router.get('/test/login',(req,res)=>{
+    res.render('test/login');
+});
+router.get('/test/logout',(req,res)=>{
+    res.send('logout page')
+});
+router.get('/test',(req,res)=>{
+    res.render('test/home');
+})
+
+router.get('/test/google',passport.authenticate('google',{
+    scope:['profile']
+}))
+
+router.get('/auth/google/redirect',passport.authenticate('google'),(req,res)=>{
+    res.send('you back from callback uri');
+});
 
 router.get('/index4',(req,res)=>{
     res.send('sucess89898')
