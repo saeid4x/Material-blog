@@ -8,6 +8,7 @@ var path=require('path');
  var mongoose=require('mongoose');
  var CommentModel=require('../Models/Comments');
  var passport =require('passport');
+ var authCheck=require('../Models/authCheckMiddleware');
   
 
  let connectionString= 'mongodb://127.0.0.1:27017/myBlog';
@@ -298,7 +299,9 @@ router.get('/test/login',(req,res)=>{
     res.render('test/login');
 });
 router.get('/test/logout',(req,res)=>{
-    res.send('logout page')
+    // res.logout();
+    req.logout();
+    res.redirect('/index4')
 });
 router.get('/test',(req,res)=>{
     res.render('test/home');
@@ -309,12 +312,20 @@ router.get('/test/google',passport.authenticate('google',{
 }))
 
 router.get('/auth/google/redirect',passport.authenticate('google'),(req,res)=>{
-    res.send('you back from callback uri');
+    // res.send(req.user.username);
+    res.redirect('/test/profile');
 });
+router.get('/test/profile',authCheck,(req,res)=>{
+    // res.send('profile='+req.user.username);
+    res.render('test/profile',{user:req.user});
+});
+// router.get('/test/profile',(req,res)=>{
+//     res.send('profile ='+req.user.username);
+// })
 
 router.get('/index4',(req,res)=>{
-    res.send('sucess89898')
+    res.send('fake home page')
 })
 
 
-module.exports=router;
+module.exports=router

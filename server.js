@@ -5,11 +5,17 @@ var express=require('express'),
     path=require('path');
     var routes=require('./routes/routes');
     var cors=require('cors');
-var passport_conf=require('./config/passport-conf');
 
+var passport=require('passport');
+var passport_conf=require('./config/passport-conf');
+var cookieSession=require('cookie-session');
+var Keys=require('./config/Keys');
+// var AuthCheck=require('./Models/authCheckMiddleware');
 var app=express();
 // var router=Router();
 // var router=express.Router();
+
+
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -34,6 +40,13 @@ app.use(express.static('./public'));
 
 app.engine('handlebars', handlebar({defaultLayout:'main', extname: '.handlebars'})); 
 app.set('view engine', 'handlebars');
+app.use(cookieSession({
+  maxAge:24 *60 *60 *1000,
+  keys:[Keys.session.cookie]
+}))
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.get('/index2',(req,res)=>{
     res.send('success');
