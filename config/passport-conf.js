@@ -32,7 +32,13 @@ passport.use(
             }else{
                 new user({
                     username:profile.displayName,
-                    googleID:profile.id
+                    googleID:profile.id,
+                    email:profile._json.email,
+                    picture:profile._json.picture,
+                    name:profile._json.given_name,
+                    family:profile._json.family_name,
+                    password:'demo'
+
                 }).save().then((newUser)=>{
                     // console.log('new user saved',userSaved);
                     done(null,newUser);
@@ -42,6 +48,7 @@ passport.use(
         }).catch((err)=>{
             console.log('error new user=',err);
         })
+        // console.log(profile._json.email);
     }
   )
 );

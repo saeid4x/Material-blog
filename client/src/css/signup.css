@@ -1,0 +1,49 @@
+.signup-wrapper{
+    width: 60%;
+    margin-left:250px;
+    margin-top:80px;
+}
+.signup-wrapper Button[type="submit"]{
+    margin-left:300px;
+    border:1px solid purple;
+    
+
+}
+.signup-wrapper span{
+    float: right;
+    padding-right:80px;
+}
+.signup-wrapper input[type="text"],input[type="password"],input[type="email"]{
+    background-color: purple !important;
+  opacity: 0.3 !important;
+  /* color:red; */
+  border-radius:10px !important;
+    
+}
+.signup-wrapper input[type="submit"]{
+    /* background-color: #ad1457 !important; */
+    background-color:transparent;
+    border:1px solid white !important;
+    color:white;
+    opacity: 1 !important;
+    width: 150px;
+    border:none;
+    box-shadow: 1px 1px purple;
+    height: 35px;
+    margin-left:200px;
+    /* color:red; */
+    border-radius:2px !important;
+
+}
+.signup-wrapper input:focus{
+    background-color: white !important;
+  opacity: 1 !important;
+  color:black;
+ 
+    
+
+}
+.signup-google-image{
+    width: 250px;
+    height: 40px;
+}

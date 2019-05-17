@@ -1,0 +1,20 @@
+ id: '112730867488629138411',
+  displayName: 'developer master',
+  name: { familyName: 'master', givenName: 'developer' },
+  emails: [ { value: 'saeid.almahdi@gmail.com', verified: true } ],
+  photos: (avatar)
+   [ { value:
+        'https://lh4.googleusercontent.com/-DcgP04OpR_w/AAAAAAAAAAI/AAAAAAAAF5Q/xC-WwKck5Ag/photo.jpg' } ],
+  provider: 'google',
+  _raw:
+   '{\n  "sub": "112730867488629138411",\n  "name": "developer master",\n  "given_name": "developer",\n  "family_name": "master",\n  "picture": "https://lh4.googleusercontent.com/-DcgP04OpR_w/AAAAAAAAAAI/AAAAAAAAF5Q/xC-WwKck5Ag/photo.jpg",\n  "email": "saeid.almahdi@gmail.com",\n  "email_verified": true,\n  "locale": "en-GB"\n}',
+  _json:
+   { sub: '112730867488629138411',
+     name: 'developer master',
+     given_name: 'developer',
+     family_name: 'master',
+     picture:
+      'https://lh4.googleusercontent.com/-DcgP04OpR_w/AAAAAAAAAAI/AAAAAAAAF5Q/xC-WwKck5Ag/photo.jpg',
+     email: 'saeid.almahdi@gmail.com',
+     email_verified: true,
+     locale: 'en-GB' } }

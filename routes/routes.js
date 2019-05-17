@@ -9,6 +9,7 @@ var path=require('path');
  var CommentModel=require('../Models/Comments');
  var passport =require('passport');
  var authCheck=require('../Models/authCheckMiddleware');
+ var user=require('../Models/users');
   
 
  let connectionString= 'mongodb://127.0.0.1:27017/myBlog';
@@ -143,6 +144,44 @@ router.get('/admin/delete/:id',(req,res)=>{
             res.redirect('http://127.0.0.1:3000/admin/managepost');
         }
     })
+})
+
+router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
+
+router.get('/auth/google/redirect',passport.authenticate('google'),(req,res)=>{
+     
+    // res.redirect('http://127.0.0.1:3000/auth/check')
+     res.json(req.user);
+   
+});
+
+/*
+
+router.get('/test/google',passport.authenticate('google',{
+    scope:['profile']
+}))
+
+router.get('/auth/google/redirect',passport.authenticate('google'),(req,res)=>{
+    // res.send(req.user.username);
+    res.redirect('/test/profile');
+});
+router.get('/test/profile',authCheck,(req,res)=>{
+    // res.send('profile='+req.user.username);
+    res.render('test/profile',{user:req.user});
+});
+
+
+
+
+*/
+
+router.post('/admin/signup',upload.none(),(req,res)=>{
+
+    // var user=new user();
+    // user.username=req.body.username;
+    // user.email=req.body.password;
+    
+    
 })
 
 
@@ -307,18 +346,6 @@ router.get('/test',(req,res)=>{
     res.render('test/home');
 })
 
-router.get('/test/google',passport.authenticate('google',{
-    scope:['profile']
-}))
-
-router.get('/auth/google/redirect',passport.authenticate('google'),(req,res)=>{
-    // res.send(req.user.username);
-    res.redirect('/test/profile');
-});
-router.get('/test/profile',authCheck,(req,res)=>{
-    // res.send('profile='+req.user.username);
-    res.render('test/profile',{user:req.user});
-});
 // router.get('/test/profile',(req,res)=>{
 //     res.send('profile ='+req.user.username);
 // })

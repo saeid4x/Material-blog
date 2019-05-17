@@ -8,12 +8,13 @@ import './test.css';
 import ButtomNavigation from '../BottomNavbar';
 // import HambergerMenu from '../HambergerMenu';
 import SidePanel from '../admin/SidePanel'
+import SignUP from '../admin/Signup';
 
 class Mdb extends Component {
   render() {
     return (
       <div>
- <SidePanel/>
+      <SignUP/>
 
 
 
