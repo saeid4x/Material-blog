@@ -9,12 +9,20 @@ import ButtomNavigation from '../BottomNavbar';
 // import HambergerMenu from '../HambergerMenu';
 import SidePanel from '../admin/SidePanel'
 import SignUP from '../admin/Signup';
+import Redux from './Redux';
 
 class Mdb extends Component {
+
+
+  componentDidMount(){
+    console.log(localStorage.getItem('accessToken'));
+  }
   render() {
     return (
       <div>
-      <SignUP/>
+       <SignUP/>
+       
+      
 
 
 

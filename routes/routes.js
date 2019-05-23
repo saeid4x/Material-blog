@@ -1,5 +1,6 @@
 var express=require('express');
 var router=express.Router();
+// var router=require('express-promise-router')();
 var multer=require('multer');
 var path=require('path');
  var persianDate=require('persian-date');
@@ -10,6 +11,8 @@ var path=require('path');
  var passport =require('passport');
  var authCheck=require('../Models/authCheckMiddleware');
  var user=require('../Models/users');
+ var Helper=require('../config/helper');
+ var JWT=require('jsonwebtoken');
   
 
  let connectionString= 'mongodb://127.0.0.1:27017/myBlog';
@@ -148,12 +151,93 @@ router.get('/admin/delete/:id',(req,res)=>{
 
 router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
 
-router.get('/auth/google/redirect',passport.authenticate('google'),(req,res)=>{
+router.get('/auth/google/redirect',passport.authenticate('google',{failureRedirect:'/signin',session:false}),(req,res)=>{
+
      
     // res.redirect('http://127.0.0.1:3000/auth/check')
-     res.json(req.user);
+//   console.log(req.user)    
+//   console.log('req.user',req.user.accessToken);
+res.redirect('http://127.0.0.1:3000/mdb/'+req.user.accessToken);
+ 
+        
    
 });
+
+
+router.post('/auth/signup',(req,res)=>{
+     user.findOne({"local.username":req.body.username}).then((data)=>{
+         if(data){
+             
+              res.send('this username already exists');
+              res.redirect('http://127.0.0.1:3000/signin');
+            // redirect to login page
+
+
+         }
+         else{
+             new user({
+                 method:'local',
+                 local:{
+                     username:req.body.username,
+                     password:req.body.password,
+                     email:req.body.email,
+                 }
+             }).save().then((newUser)=>{
+                //  console.log('data ='+newUser);
+              
+            var token= Helper.signToken(newUser.id); //token assign to user(part of unique)
+            // res.send(token);
+            var data={
+                token:token,
+                userID:newUser._id
+            }
+            res.json(data);
+            // res.send('new user creatde successfuly!\n'+'token='+token);
+            // console.log('token=\t',token);
+            
+             });
+
+           
+         }
+     })
+     
+
+
+});
+//return info an user
+router.get('/user/:userID',(req,res)=>{
+    user.findOne({_id:req.params.userID}).then((data)=>{
+        if(data){
+            res.json(data);
+            // console.log(data.local.username);
+        }else{
+            res.send('user not found');
+        }
+        
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+    
+})
+
+
+//protected route
+router.get('/profile',passport.authenticate('jwt',{session:false}),(req,res)=>{
+
+    // console.log('this is protected route');
+    // console.log(User);
+    // res.status(200).send('welcome the profile='+req.user.username);
+    res.json(req.user);
+})
+
+router.post('/auth/signIn',passport.authenticate('local',{session:false}),(req,res)=>{
+   
+    const token=Helper.signToken(req.user); // by this token we can access to protected route
+    res.status(200).json({token});
+    //  console.log('login successful');
+});
+
 
 /*
 
@@ -175,14 +259,14 @@ router.get('/test/profile',authCheck,(req,res)=>{
 
 */
 
-router.post('/admin/signup',upload.none(),(req,res)=>{
+// router.post('/admin/signup',upload.none(),(req,res)=>{
 
-    // var user=new user();
-    // user.username=req.body.username;
-    // user.email=req.body.password;
+//     // var user=new user();
+//     // user.username=req.body.username;
+//     // user.email=req.body.password;
     
     
-})
+// })
 
 
 
@@ -329,6 +413,8 @@ router.get('/test/msg',(req,res)=>{
     };
     res.json(msg);
 })
+
+// router.get('/auth/google2',passport.authenticate('google',{scope:['profile','email']}));
 
 
 

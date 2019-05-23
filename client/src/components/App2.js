@@ -1,7 +1,7 @@
 import React ,{Component}from 'react';
 import {BrowserRouter as Router,Route}from 'react-router-dom';
 
-import Dashboard from './admin/Dashboard';
+// import Dashboard from './admin/Dashboard';
 import SendPost from './admin/SendPost';
 import ManagePost from './admin/ManagePost';
 import UpdatePost from './admin/UpdatePost';
@@ -14,11 +14,15 @@ import '../css/materialize.min.css';
  import Playground from './test/Mdb';
  import Navbar from './Navbar';
  import '../css/style.css';
-  
-  
+  import queryString from 'query-string';
+  import Dashboard from './Dashboard';
+  import RedirectGoogle from './admin/RedirectGoogle';
+  import TestParam from './test/TestParam';
  
 
 class App2 extends Component{
+   
+
 
   render(){
     return(  
@@ -34,10 +38,13 @@ class App2 extends Component{
         <Route exact path="/cat/:cat" component={PostPerCat}/>
         <Route path="/post/:postID" component={DetailsPost} />
         <Route  path="/homepage" component={HomePage}/>
-<Route exact path="/" component={GotoHomepage}/>
-        
+        <Route exact path="/" component={GotoHomepage}/>        
         <Route  path="/mostvisited" component={MostVisited}/>
         <Route  path="/mdb" component={Playground}/>
+        <Route  path="/user/:userID/dashboard" component={Dashboard}/>
+        <Route  path="/auth/google/redirect" component={RedirectGoogle}/>
+        <Route path="/test/:id" component={TestParam} />
+
        
        
 
