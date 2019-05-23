@@ -16,6 +16,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import "../../css/ManagePost.css";
 import ButtomNavbar from '../BottomNavbar';
 import SidePanel from './SidePanel';
+// import Axios from "axios";
+import Keys from '../config/Keys'
+import axios from 'axios';
 
 
 class ManagePost extends Component {
@@ -27,18 +30,19 @@ class ManagePost extends Component {
   number = 1;
 
   componentDidMount() {
-    var url = "http://127.0.0.1:8082/admin/managepost";
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          postFetched: data
-        });
-        console.log("url=", window.location.href);
-      })
-      .catch(err => {
-        console.log("Error during Fetch=", err);
-      });
+    
+     if(!localStorage.getItem('token')){
+       this.props.history.push('/signin');
+     }
+      axios.post(Keys.URLS.BACKEND+'/admin/managepost',{userID:localStorage.getItem('userID')})
+       
+       .then((data)=>{
+         this.setState({
+           postFetched:data.data
+         })
+      
+       });
+       
   }
 
   render() {

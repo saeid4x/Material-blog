@@ -73,6 +73,7 @@ router.post('/admin/sendpost',upload.single('img_post'),(req,res)=>{
 
        
        data.title=(req.body.title),
+       data.userID=(req.body.userID)
        data.body=(req.body.body),
         data.category=(req.body.category),
        data.postImage=req.file.filename,
@@ -93,16 +94,27 @@ router.post('/admin/sendpost',upload.single('img_post'),(req,res)=>{
    
 });
 
-router.get('/admin/managepost',(req,res)=>{
-    postModel.find({},(err,data)=>{
+router.post('/admin/managepost',(req,res)=>{
+    // postModel.find({},(err,data)=>{
+    //     if(err){
+    //         res.send(err);
+    //     }else{
+    //         res.json(data);
+    //         // res.render('admin/managepost', {data});
+    //     }
+
+    // });
+    // console.log('userID'+req.body.userID);
+    postModel.find({userID:req.body.userID},(err,data)=>{
+        console.log('userID',req.body.userID)
         if(err){
             res.send(err);
-        }else{
-            res.json(data);
-            // res.render('admin/managepost', {data});
         }
-
-    });
+        else{
+            console.log(data.length)
+            res.json(data);
+        }
+    })
     
 })
 
@@ -156,8 +168,10 @@ router.get('/auth/google/redirect',passport.authenticate('google',{failureRedire
      
     // res.redirect('http://127.0.0.1:3000/auth/check')
 //   console.log(req.user)    
-//   console.log('req.user',req.user.accessToken);
-res.redirect('http://127.0.0.1:3000/mdb/'+req.user.accessToken);
+  console.log('access token=',req.user.accessToken);
+  console.log('user info=',req.user.newCurrentUser);
+
+res.redirect('http://127.0.0.1:3000/admin/'+req.user.newCurrentUser+'/'+req.user.accessToken);
  
         
    
@@ -168,7 +182,7 @@ router.post('/auth/signup',(req,res)=>{
      user.findOne({"local.username":req.body.username}).then((data)=>{
          if(data){
              
-              res.send('this username already exists');
+             
               res.redirect('http://127.0.0.1:3000/signin');
             // redirect to login page
 
@@ -191,6 +205,7 @@ router.post('/auth/signup',(req,res)=>{
                 token:token,
                 userID:newUser._id
             }
+            console.log('data=',data);
             res.json(data);
             // res.send('new user creatde successfuly!\n'+'token='+token);
             // console.log('token=\t',token);

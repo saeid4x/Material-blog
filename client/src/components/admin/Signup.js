@@ -21,7 +21,11 @@ class Signup extends Component {
   }
 
   componentDidMount(){
-     
+    
+    if(localStorage.getItem('token')){
+        this.props.history.push('/admin/sendpost')
+    }
+
     axios.get(Keys.URLS.BACKEND+'/auth/google/redirect')
     .then((res)=>res.json())
     .then((token)=>{
@@ -136,13 +140,13 @@ class Signup extends Component {
                     alt=""
                   />
                 </a>
-                <GoogleLogin
+                {/* <GoogleLogin
                     clientId={Keys.google.ClientID}
                     buttonText="Sign Up With Google"
                     onFailure={this.googleResponse}
                     onSuccess={this.googleResponse}
                     
-                />
+                /> */}
                 <input type="submit" value="ثبت نام" />
               </MDBCol>
             </Card>

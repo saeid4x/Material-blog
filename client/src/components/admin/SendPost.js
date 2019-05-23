@@ -22,6 +22,29 @@ import Create from "@material-ui/icons/Create";
 import SidePanel from './SidePanel';
 
 class SendPost extends Component {
+  constructor(props){
+    super(props);
+    
+   
+  }
+  state={
+    title:null,
+    body:null,
+    category:null,
+    image_url:null
+  }
+ 
+
+
+componentDidMount(){
+  if(!localStorage.getItem('token')){
+    this.props.history.push('/signin')
+  }
+}
+
+
+
+
   render() {
     return (
       <div>
@@ -44,9 +67,10 @@ class SendPost extends Component {
                   action="http://127.0.0.1:8082/admin/sendpost"
                   enctype="multipart/form-data"
                 >
+                <input type="hidden"   name="userID" value={localStorage.getItem('userID')}/>
                   <MDBRow end>
                     <MDBCol md="6">
-                      <input type="text" name="title" className="admin-input" />
+                      <input type="text" name="title"   className="admin-input" />
                     </MDBCol>
                     <MDBCol md="1">
                       <span>عنوان </span>
@@ -68,7 +92,7 @@ class SendPost extends Component {
                         className="sendpost-body"
                       /> */}
                        
-                      <textarea name="body" className="admin-input" id="" cols="30" rows="10"></textarea>
+                      <textarea name="body"  className="admin-input" id="" cols="30" rows="10"></textarea>
                     </MDBCol>
                   </MDBRow>
 
@@ -78,6 +102,7 @@ class SendPost extends Component {
                       <select
                         name="category"
                         className="browser-default custom-select admin-component-select"
+                        
                       >
                         <option value="" disabled selected>
                           انتخاب دسته بندی پست
@@ -105,6 +130,7 @@ class SendPost extends Component {
                           className="custom-file-input"
                           id="inputGroupFile01"
                           aria-describedby="inputGroupFileAddon01"
+                          
                         />
                         <label
                           className="custom-file-label"

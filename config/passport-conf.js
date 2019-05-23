@@ -36,9 +36,10 @@ passport.use(
         .then(currentUser => {
           if (currentUser) {
               // console.log('current user=',currentUser);
+              var newCurrentUser=currentUser._id;
            
               
-            done(null, {currentUser,accessToken});
+            done(null, {newCurrentUser,accessToken});
           } else {
               
             new user({

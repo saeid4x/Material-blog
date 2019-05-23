@@ -18,6 +18,9 @@ import '../css/materialize.min.css';
   import Dashboard from './Dashboard';
   import RedirectGoogle from './admin/RedirectGoogle';
   import TestParam from './test/TestParam';
+  import CheckToken from './admin/CheckToken';
+  import SignIn from './admin/SignIn';
+  import SignUp from './admin/Signup';
  
 
 class App2 extends Component{
@@ -44,6 +47,13 @@ class App2 extends Component{
         <Route  path="/user/:userID/dashboard" component={Dashboard}/>
         <Route  path="/auth/google/redirect" component={RedirectGoogle}/>
         <Route path="/test/:id" component={TestParam} />
+        <Route path="/admin/:id/:accessToken" component={CheckToken}/>
+        <Route path="/signin" component={SignIn}/>
+        <Route path="/signup" component={SignUp}/>
+
+
+        {/* <Route path="/dashboard" component={TestParam} /> */}
+
 
        
        

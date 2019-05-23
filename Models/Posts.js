@@ -10,7 +10,8 @@ var postSchema=new Schema({
     datePosted:{type:String,default:'no_date'},
     category:{type:String,default:'no_category'},
     numBazdid:{type:Number,default:0},
-    postImage:{type:String,default:'no_image'}
+    postImage:{type:String,default:'no_image'},
+    userID:{type:String}
 });
 
 module.exports=mongoose.model('Post',postSchema);

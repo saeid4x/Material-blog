@@ -4,11 +4,38 @@ import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem ,MDBCo
 import {Link} from 'react-router-dom';
 import '../css/style.css';
 class Navbar extends Component {
+  
+
+  state={
+    isAuthorized:false,
+    textAuthorize:null
+  }
+componentDidMount(){
+  console.log('component navbar mounted');
+  if(!localStorage.getItem('token')){
+    this.setState({
+      textAuthorize:'عضویت -ورود'
+
+    })
+  }else{
+    this.setState({
+      textAuthorize:'داشبورد من'
+    })
+  }
+}
+ 
+ 
+   
   render() {
     return (
       <div className="mynav fixed-top">
+
+ 
         <MDBRow end> 
+          
+        <MDBCol md="2"><div className="navbar-signup"><Link to="/signup"> <span>{this.state.textAuthorize}</span> </Link></div> </MDBCol>
           <MDBCol md="2"><Link to="/contact-me">  <span className="mynav-text-menu pt-md-3 pl-md-5 ml-md-3">تماس با من </span></Link> </MDBCol>
+         
           <MDBCol md="2">  <Link to="/contact-me">  <span className="mynav-text-menu pt-md-3 pl-md-5 ml-md-3">درباره من </span></Link> </MDBCol>
           
         <MDBCol md="2">

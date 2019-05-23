@@ -11,34 +11,43 @@ class Dashboard extends Component{
 
     }
      
+    componentWillMount(){
+        
+       this.props.history.push('/admin/sendpost');
+
+    }
     componentDidMount(){
         
         
-        if(!localStorage.getItem('token')){
-             
-        window.history.pushState('','','/signin');
-        window.location.reload();
-
-
-        }
        fetch(Keys.URLS.BACKEND+'/user/'+localStorage.getItem('userID'))
        .then((res)=>res.json())
        .then((data)=>{
           this.setState({
-              username:data.local.username,
-              email:data.local.email,
-              token:localStorage.getItem('token')
+            //   username:data.data.local.username,
+            //   email:data.data.local.email,
+            //   token:data.localStorage.getItem('token')
           })
        })
        
         
     }
-
+    loadData(){
+        if(!localStorage.getItem('token')){
+             
+            window.history.pushState('','','/signin');
+            window.location.reload();
+    
+    
+            }
+            else{
+                
+            }
+       }
     render(){
         return(
             <div>
-                <h1>This is Dashboard</h1>
-               <h3> Hi ,{this.state.username}</h3>
+              
+                
             </div>
         )
     }

@@ -8,18 +8,44 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import {Link} from 'react-router-dom';
-
-import { MDBRow, MDBCol } from "mdbreact";
- 
+import axios from 'axios';
+import { MDBRow, MDBCol } from "mdbreact"; 
+import Keys from '../config/Keys'
 
 class SidePanel extends Component {
+  constructor(props){
+    super(props);
+  }
+  state={
+    username:null,
+    avatar:null
+  }
+  componentDidMount(){
+    // console.log('side bar');
+    if(!localStorage.getItem('token') || localStorage.getItem('token')=== undefined){
+      this.props.history.push('/signup');
+    }
+    else{
+      axios.get(Keys.URLS.BACKEND+'/user/'+localStorage.getItem('userID'))
+     
+      .then((data)=>{
+        this.setState({
+          username:data.data.local.username,
+          avatar:data.data.profile.avatar
+        });
+         
+      })
+    }
+   
+  }
   render() {
+    
     return (
       <div className="sidePanel">
         <section className="sidePanel-avatar row">
-          <img src="../images/static/noimage.jpg" alt="" className="col-md-8 sidePanel-avater-img" />
+          <img src={this.state.avatar} alt="" className="col-md-8 sidePanel-avater-img" />
 
-          <span className="col-md-12">saeid4x</span>
+          <span className="col-md-12"> {this.state.username}</span>
         </section>
        
 
