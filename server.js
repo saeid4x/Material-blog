@@ -26,6 +26,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('./public'));
 
+//@@
+app.use(express.static(path.join(__dirname,"client","build")));
+
 // <upload-multer>
 // const storage=multer.diskStorage({
 //   destination:'./public/uploads/images/',
