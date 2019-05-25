@@ -9,5 +9,6 @@ module.exports={
         cookie:'my session'
     },
     connectionStringLocal:'mongodb://127.0.0.1:27017/myBlog',
-    connectionStringCloud:'mongodb+srv://saeid4x:saeid@2019@cluster0-qylhg.mongodb.net/test?retryWrites=true'
+    connectionStringCloud:'mongodb+srv://saeid4x2:saeid2294637@cluster0-qylhg.mongodb.net/test?retryWrites=true',
+    frontendUrl:'http://127.0.0.1:3000'
 }

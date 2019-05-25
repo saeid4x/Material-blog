@@ -88,7 +88,7 @@ router.post('/admin/sendpost',upload.single('img_post'),(req,res)=>{
             {res.json(err)}
             else{
                 // res.json(data)
-                res.redirect('http://127.0.0.1:3000/admin/sendpost')
+                res.redirect(Keys.frontendUrl+'/admin/sendpost')
             }
         })
         
@@ -144,7 +144,7 @@ router.post('/admin/update',upload.single('img_post'),(req,res)=>{
             if(err){
                 res.json(err);
             }else{
-               res.redirect('http://127.0.0.1:3000/admin/managepost')
+               res.redirect(Keys.frontendUrl+'/admin/managepost')
                
             }
         }) 
@@ -158,7 +158,7 @@ router.get('/admin/delete/:id',(req,res)=>{
             res.send('Error\t'+err);
         }
         else{
-            res.redirect('http://127.0.0.1:3000/admin/managepost');
+            res.redirect(Keys.frontendUrl+'/admin/managepost');
         }
     })
 })
@@ -173,7 +173,7 @@ router.get('/auth/google/redirect',passport.authenticate('google',{failureRedire
   console.log('access token=',req.user.accessToken);
   console.log('user info=',req.user.newCurrentUser);
 
-res.redirect('http://127.0.0.1:3000/admin/'+req.user.newCurrentUser+'/'+req.user.accessToken);
+res.redirect(Keys.frontendUrl+'/admin/'+req.user.newCurrentUser+'/'+req.user.accessToken);
  
         
    
@@ -185,7 +185,7 @@ router.post('/auth/signup',(req,res)=>{
          if(data){
              
              
-              res.redirect('http://127.0.0.1:3000/signin');
+              res.redirect(Keys.frontendUrl+'/signin');
             // redirect to login page
 
 
@@ -381,7 +381,7 @@ router.post('/post/:postID/insertComment',upload.none(),(req,res)=>{
         }
         else{
             // console.log(req.params.postID);
-            var redirectUrl=`http://127.0.0.1:3000/post/${postid}`;
+            var redirectUrl=`${Keys.frontendUrl}/post/${postid}`;
             res.redirect(redirectUrl);
         }
              
