@@ -6,9 +6,9 @@ import App2 from './components/App2';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import {Link,BrowserRouter as Router} from 'react-router-dom';
 
-ReactDOM.render(<App2 />, document.getElementById('root'));
+
+ReactDOM.render(<App2/>, document.getElementById('root'));
  
 
 // If you want your app to work offline and load faster, you can change

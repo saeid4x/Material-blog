@@ -15,6 +15,7 @@ import Keys from '../config/Keys'
 class SidePanel extends Component {
   constructor(props){
     super(props);
+    
   }
   state={
     username:null,

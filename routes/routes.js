@@ -13,10 +13,12 @@ var path=require('path');
  var user=require('../Models/users');
  var Helper=require('../config/helper');
  var JWT=require('jsonwebtoken');
+ var Keys = require('../config/Keys');
   
 
- let connectionString= 'mongodb://127.0.0.1:27017/myBlog';
- mongoose.connect(connectionString,{useNewUrlParser:true},(err,success)=>{
+//  let connectionString= 'mongodb://127.0.0.1:27017/myBlog';
+
+ mongoose.connect(Keys.connectionStringCloud,{useNewUrlParser:true},(err,success)=>{
      if(err){
          console.log('connect database error=',err);
      }

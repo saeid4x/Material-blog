@@ -55,7 +55,10 @@ app.get('/index2',(req,res)=>{
     res.send('success');
 })
 app.use(routes);
-let port =8082;
+const port = process.env.PORT || 8082
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(__dirname,"client","build","index.html"))
+});
 app.listen(port,(err)=>{
     console.log('connected to port =\t',port);
 })
