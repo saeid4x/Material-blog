@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "webpack": "^4.30.0"
+    "webpack": "^5.75.0"
   },
   "engines":{
     "node":"10.15.3"
